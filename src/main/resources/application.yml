@@ -1,0 +1,11 @@
+server:
+  port: 80
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.109:3306/spring?useSSL=false
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations: /mapper/*.xml
