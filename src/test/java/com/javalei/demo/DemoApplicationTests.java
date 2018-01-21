@@ -19,10 +19,15 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.junit4.SpringRunner;
+import redis.clients.jedis.Jedis;
+
+import javax.sound.midi.SoundbankResource;
+import java.util.HashMap;
+import java.util.Map;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
  public class DemoApplicationTests {
 
 	private MongoClient mongoClient= mongodbConfig.getClient();
@@ -52,9 +57,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 	}
 
+	private Jedis jedis ;
+
     @Test
     public void contextLoads2() {
-        System.out.println(mongoClient);
+        jedis=new Jedis("192.168.1.109");
+        jedis.auth("123456");
+        jedis.hset("user","username","zhangzw");
+        Map<String,String> map=new HashMap<>();
+        map.put("sysadmin","1");
+        map.put("admin","admin");
+        map.put("sysadmin2","sysadmin2");
+        jedis.hmset("user1",map);
+        System.out.println(jedis.hexists("user1","sysadmin"));
+        System.out.println(jedis.keys("*"));
+
+
     }
 
 
