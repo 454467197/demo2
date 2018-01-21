@@ -5,13 +5,14 @@ class App extends React.Component{
 
 
     componentWillMount(){
-        fetch("http://127.0.0.1/user").then((re)=>re.json().then((obj)=>{
-            obj1=obj;
-            console.log(obj);
-
-
-        }))
-
+        fetch("http://127.0.0.1/insert",{
+            method: 'POST',
+            
+            body: {
+              s: 'secondValue'
+            }
+        }).then((re)=>console.log(re))
+       // $.post("http://127.0.0.1/insert",{s:'secondValue'},(data)=>console.log(data));
     }
 
     render(){
