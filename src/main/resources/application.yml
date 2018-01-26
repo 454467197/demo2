@@ -6,8 +6,8 @@ spring:
     url: jdbc:mysql://192.168.1.109:3306/spring?useSSL=false
     username: root
     password: root
-  redis:
-    host: 192.168.1.109
+#  redis:
+#    host: 192.168.1.109
 
 mybatis:
   mapper-locations: /mapper/*.xml
