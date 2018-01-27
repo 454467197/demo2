@@ -1,6 +1,7 @@
 package com.javalei.demo;
 
 import com.javalei.config.mongodbConfig;
+import com.javalei.server.Redis;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import static com.mongodb.client.model.Filters.*;
@@ -61,7 +62,7 @@ import java.util.Map;
 
     @Test
     public void contextLoads2() {
-        jedis=new Jedis("192.168.1.109");
+        jedis=new Jedis("ecology9.com");
         jedis.auth("123456");
         jedis.hset("user","username","zhangzw");
         Map<String,String> map=new HashMap<>();
@@ -72,6 +73,13 @@ import java.util.Map;
         System.out.println(jedis.hexists("user1","sysadmin"));
         System.out.println(jedis.keys("*"));
 
+
+    }
+    @Autowired
+    private Redis redis;
+
+    @Test
+    public  void redisTest(){
 
     }
 
