@@ -5,6 +5,7 @@ import com.javalei.server.Mongodb;
 import com.mongodb.Block;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
 import org.bson.Document;
 
 import org.springframework.stereotype.Service;
@@ -14,6 +15,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Projections.*;
+import static com.mongodb.client.model.Sorts.*;
+import static com.mongodb.client.model.Aggregates.*;
 @Service
 public class MongoImpl implements Mongodb{
 
@@ -55,6 +61,16 @@ public class MongoImpl implements Mongodb{
 
     @Override
     public void delete(List list) {
+
+    }
+
+    @Override
+    public long deleteOne(String id) {
+
+
+     return mongoCollection.deleteOne(eq("id",id)).getDeletedCount();
+
+
 
     }
 }

@@ -23,23 +23,24 @@ public class MongoController {
 
     @RequestMapping("/insert")
 
-    public void  insertOne(@RequestParam Map<String,String> s){
-        System.out.println("进入了insertone");
-        s.put("id",redis.getId()+"");
-       // System.out.println(s);
+    public long  insertOne(@RequestParam Map<String,String> s){
+
+        long id=redis.getId();
+        s.put("id",id+"");
+        s.put("complete","0");
+
         for (String s1 : s.keySet()) {
             System.out.println(s1);
             System.out.println(s.get(s1));
         }
         mongodb.insert(s);
 
-    }
-    @RequestMapping("/insert1")
-    public int  insertOne(String  text){
-        System.out.println("进入了insertone2");
-        System.out.println(text);
+        return id;
 
-        return 1;
+    }
+    @RequestMapping("/delete")
+    public long  delete(String  id){
+         return mongodb.deleteOne(id);
     }
     @RequestMapping("/se")
     public List<Map<String,Object>> select(){

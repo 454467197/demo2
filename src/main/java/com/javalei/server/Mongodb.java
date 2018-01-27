@@ -12,4 +12,5 @@ public interface Mongodb {
      List<Map<String,Object>> select();
      List<Map<String,Object>> select(List<Map<String,Object>> list);
      void delete(List list);
+     long deleteOne(String id);
 }
