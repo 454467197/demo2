@@ -1,6 +1,7 @@
 package com.javalei.controller;
 
 import com.javalei.server.Mongodb;
+import com.javalei.server.Redis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,17 +16,21 @@ import java.util.Map;
 public class MongoController {
     @Autowired
     private Mongodb mongodb;
+    @Autowired
+    Redis redis;
+
+
 
     @RequestMapping("/insert")
 
     public void  insertOne(@RequestParam Map<String,String> s){
         System.out.println("进入了insertone");
-        System.out.println(s);
+        s.put("id",redis.getId()+"");
+       // System.out.println(s);
         for (String s1 : s.keySet()) {
             System.out.println(s1);
             System.out.println(s.get(s1));
         }
-
         mongodb.insert(s);
 
     }
