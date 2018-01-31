@@ -15,7 +15,7 @@ public class mongodbConfig {
     @Bean
     public static MongoClient getClient(){
         List<ServerAddress> list=new ArrayList<>();
-        list.add(new ServerAddress("192.168.1.109"));
+        list.add(new ServerAddress("192.168.2.8"));
         list.add(new ServerAddress("106.14.114.211"));
         list.add(new ServerAddress("106.14.113.242"));
 
